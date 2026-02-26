@@ -1,0 +1,317 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Contact | ${SITE_TITLE}`}
+			description="Get in touch with Stamp 731 Notary — book an appointment, ask a question, or request a mobile visit."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+
+			<!-- ── Page Hero ── -->
+			<section class="page-hero">
+				<div class="container page-hero-inner">
+					<p class="eyebrow">We'd Love to Hear From You</p>
+					<h1>Contact Us</h1>
+					<hr class="gold-divider" />
+					<p class="page-hero-sub">
+						Ready to schedule an appointment or have a question?
+						Reach out — we respond quickly.
+					</p>
+				</div>
+			</section>
+
+			<!-- ── Contact Layout ── -->
+			<section class="contact-section">
+				<div class="container contact-inner">
+
+					<!-- Info Column -->
+					<div class="contact-info">
+						<h2>Get in Touch</h2>
+						<p class="info-intro">
+							Serving Jackson, TN and the surrounding 731 area. Mobile services
+							available — we come to you.
+						</p>
+
+						<ul class="info-list">
+							<li>
+								<span class="info-icon">📞</span>
+								<div>
+									<strong>Phone</strong>
+									<a href="tel:+17319991234">(731) 999-1234</a>
+								</div>
+							</li>
+							<li>
+								<span class="info-icon">✉️</span>
+								<div>
+									<strong>Email</strong>
+									<a href="mailto:mallory@stamp731notary.com">mallory@stamp731notary.com</a>
+								</div>
+							</li>
+							<li>
+								<span class="info-icon">📍</span>
+								<div>
+									<strong>Service Area</strong>
+									<span>Jackson, TN &amp; surrounding 731 area</span>
+								</div>
+							</li>
+							<li>
+								<span class="info-icon">🕐</span>
+								<div>
+									<strong>Hours</strong>
+									<span>Mon–Sat: 8am–7pm<br />Evenings &amp; weekends by request</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Form Column -->
+					<div class="contact-form-wrap">
+						<h2>Send a Message</h2>
+						<p class="form-note">
+							Fill out the form below and Mallory will get back to you within one business day.
+						</p>
+						<!-- TODO: Replace the mailto action with a server-side form handler (e.g., Cloudflare Worker,
+						     Formspree, or Web3Forms) before going live. The mailto action below opens the
+						     user's email client and does not reliably capture submissions. -->
+						<form
+							class="contact-form"
+							method="POST"
+							action="mailto:mallory@stamp731notary.com"
+							enctype="text/plain"
+						>
+							<div class="form-row">
+								<div class="form-group">
+									<label for="fname">First Name</label>
+									<input type="text" id="fname" name="fname" placeholder="Jane" required />
+								</div>
+								<div class="form-group">
+									<label for="lname">Last Name</label>
+									<input type="text" id="lname" name="lname" placeholder="Smith" required />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="email">Email Address</label>
+								<input type="email" id="email" name="email" placeholder="jane@example.com" required />
+							</div>
+
+							<div class="form-group">
+								<label for="phone">Phone Number</label>
+								<input type="tel" id="phone" name="phone" placeholder="(731) 555-0100" />
+							</div>
+
+							<div class="form-group">
+								<label for="service">Service Needed</label>
+								<select id="service" name="service">
+									<option value="">-- Select a service --</option>
+									<option value="general">General Notarization</option>
+									<option value="real-estate">Real Estate / Loan Signing</option>
+									<option value="legal">Legal Documents</option>
+									<option value="mobile">Mobile Notary</option>
+									<option value="other">Other / Not Sure</option>
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label for="message">Message</label>
+								<textarea
+									id="message"
+									name="message"
+									placeholder="Tell us a bit about what you need and your preferred date/time…"
+									rows="5"
+								></textarea>
+							</div>
+
+							<button type="submit" class="btn btn-gold submit-btn">Send Message</button>
+						</form>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- ── Quick CTA Band ── -->
+			<section class="quick-cta">
+				<div class="container quick-cta-inner">
+					<div>
+						<strong>Prefer to call?</strong>
+						<span> We pick up during business hours.</span>
+					</div>
+					<a href="tel:+17319991234" class="btn btn-gold">(731) 999-1234</a>
+				</div>
+			</section>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	/* ── Page Hero ── */
+	.page-hero {
+		background: var(--black);
+		padding: 4.5rem 1.5rem 4rem;
+		text-align: center;
+		border-bottom: 3px solid var(--gold);
+	}
+	.page-hero h1 {
+		color: var(--white);
+		margin-bottom: 0.5rem;
+	}
+	.eyebrow {
+		color: var(--gold);
+		font-size: 0.88rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		margin-bottom: 0.5rem;
+	}
+	.page-hero-sub {
+		color: rgba(255,255,255,0.78);
+		font-size: 1.1rem;
+		max-width: 520px;
+		margin: 0 auto;
+	}
+
+	/* ── Contact Section ── */
+	.contact-section {
+		padding: var(--section-padding);
+		background: var(--cream);
+	}
+	.contact-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 3.5rem;
+		align-items: flex-start;
+	}
+
+	/* Info Column */
+	.contact-info {
+		flex: 1;
+		min-width: 260px;
+		max-width: 380px;
+	}
+	.contact-info h2 {
+		color: var(--black);
+		margin-bottom: 0.5rem;
+	}
+	.info-intro {
+		color: var(--text-muted);
+		font-size: 0.97rem;
+		margin-bottom: 2rem;
+	}
+	.info-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.4rem;
+	}
+	.info-list li {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+	.info-icon {
+		font-size: 1.4rem;
+		flex-shrink: 0;
+		margin-top: 0.15rem;
+	}
+	.info-list div {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+	}
+	.info-list strong {
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--gold-dark);
+	}
+	.info-list a,
+	.info-list span {
+		font-size: 1rem;
+		color: var(--black-soft);
+		text-decoration: none;
+		line-height: 1.5;
+	}
+	.info-list a:hover { color: var(--gold-dark); text-decoration: underline; }
+
+	/* Form Column */
+	.contact-form-wrap {
+		flex: 1.4;
+		min-width: 300px;
+		background: var(--white);
+		border-radius: 12px;
+		padding: 2.5rem 2rem;
+		box-shadow: var(--card-shadow);
+		border-top: 3px solid var(--gold);
+	}
+	.contact-form-wrap h2 {
+		color: var(--black);
+		margin-bottom: 0.4rem;
+	}
+	.form-note {
+		color: var(--text-muted);
+		font-size: 0.93rem;
+		margin-bottom: 1.75rem;
+	}
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+	.submit-btn {
+		align-self: flex-start;
+		padding: 0.9rem 2.5rem;
+		font-size: 1.05rem;
+	}
+
+	/* ── Quick CTA Band ── */
+	.quick-cta {
+		background: var(--cream-dark);
+		border-top: 1px solid #ddd0b8;
+		border-bottom: 3px solid var(--gold);
+		padding: 1.5rem;
+	}
+	.quick-cta-inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+	.quick-cta-inner div {
+		font-size: 1rem;
+		color: var(--black);
+	}
+
+	@media (max-width: 720px) {
+		.contact-inner { flex-direction: column; }
+		.contact-info { max-width: 100%; }
+		.form-row { grid-template-columns: 1fr; }
+		.submit-btn { align-self: stretch; text-align: center; }
+		.quick-cta-inner { justify-content: center; text-align: center; }
+	}
+</style>

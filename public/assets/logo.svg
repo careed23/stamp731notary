@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none">
+  <rect width="44" height="44" rx="6" fill="#1A1A1A"/>
+  <rect x="4" y="4" width="36" height="36" rx="4" fill="#C9A84C" fill-opacity="0.15"/>
+  <!-- Stamp / seal shape -->
+  <circle cx="22" cy="22" r="14" stroke="#C9A84C" stroke-width="2.5" fill="none"/>
+  <circle cx="22" cy="22" r="10" stroke="#C9A84C" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+  <!-- "731" text representation as paths -->
+  <text x="22" y="27" text-anchor="middle" font-family="serif" font-size="11" font-weight="bold" fill="#C9A84C">731</text>
+</svg>
