@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_TITLE, CONTACT_EMAIL } from '../consts';
+---
+
+<BaseLayout
+  title={`Contact | ${SITE_TITLE}`}
+  description="Contact Stamp 731 Notary to schedule a loan signing appointment or inquire about our notary services. Serving with precision and professionalism."
+>
+
+  <!-- Page header -->
+  <section class="bg-[#1a1a1a] py-24 px-6 text-white text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="section-label mb-4">Reach Out</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-normal mb-4">Contact Us</h1>
+      <div class="gold-rule"></div>
+      <p class="text-gray-300 mt-6 max-w-lg mx-auto">
+        Ready to schedule a signing or have questions about our services?
+        We'd love to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact section -->
+  <section class="bg-[#f8f4ed] py-20 px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Contact info -->
+      <div>
+        <p class="section-label mb-3">Get in Touch</p>
+        <h2 class="font-serif text-3xl text-[#1a1a1a] mb-4">We're Here to Help</h2>
+        <div class="w-12 h-0.5 bg-[#c8a951] mb-8"></div>
+
+        <p class="text-gray-700 leading-relaxed mb-8">
+          Whether you need a loan signing, document notarization, apostille services,
+          or business contract notarization, Stamp 731 Notary is ready to serve you
+          with the professionalism and precision you deserve.
+        </p>
+
+        <ul class="space-y-5 list-none m-0 p-0">
+          <li class="flex items-start gap-4">
+            <span class="text-[#c8a951] text-xl mt-0.5">✉</span>
+            <div>
+              <p class="font-semibold text-[#1a1a1a] text-sm uppercase tracking-wider mb-1">Email</p>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                class="text-gray-600 hover:text-[#c8a951] transition-colors no-underline"
+              >{CONTACT_EMAIL}</a>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="text-[#c8a951] text-xl mt-0.5">📍</span>
+            <div>
+              <p class="font-semibold text-[#1a1a1a] text-sm uppercase tracking-wider mb-1">Service Area</p>
+              <p class="text-gray-600">Mobile notary — available at your location</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="text-[#c8a951] text-xl mt-0.5">🕐</span>
+            <div>
+              <p class="font-semibold text-[#1a1a1a] text-sm uppercase tracking-wider mb-1">Availability</p>
+              <p class="text-gray-600">Flexible scheduling, including evenings &amp; weekends</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Netlify contact form -->
+      <!--
+        SETUP NOTE: After deploying to Netlify, go to:
+        Site configuration → Forms → Form notifications
+        and add an email notification for mallory@stamp731.com
+        so you receive all form submissions instantly.
+      -->
+      <div class="bg-white border border-[#ede8df] p-8 md:p-10">
+        <h3 class="font-serif text-2xl text-[#1a1a1a] mb-6">Send a Message</h3>
+
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/contact/thank-you"
+          class="space-y-5"
+        >
+          <!-- Netlify required hidden input -->
+          <input type="hidden" name="form-name" value="contact" />
+
+          <!-- Honeypot (spam prevention) -->
+          <p class="hidden" aria-hidden="true">
+            <label>
+              Don't fill this out if you're human:
+              <input name="bot-field" />
+            </label>
+          </p>
+
+          <!-- Name -->
+          <div>
+            <label for="name" class="block text-sm font-semibold text-[#1a1a1a] uppercase tracking-wider mb-2">
+              Full Name <span class="text-[#c8a951]">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your full name"
+              class="w-full border border-[#ede8df] bg-[#f8f4ed] px-4 py-3 text-sm text-[#1a1a1a] placeholder-gray-400 focus:outline-none focus:border-[#c8a951]"
+            />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-semibold text-[#1a1a1a] uppercase tracking-wider mb-2">
+              Email Address <span class="text-[#c8a951]">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              class="w-full border border-[#ede8df] bg-[#f8f4ed] px-4 py-3 text-sm text-[#1a1a1a] placeholder-gray-400 focus:outline-none focus:border-[#c8a951]"
+            />
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label for="phone" class="block text-sm font-semibold text-[#1a1a1a] uppercase tracking-wider mb-2">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="(555) 555-5555"
+              class="w-full border border-[#ede8df] bg-[#f8f4ed] px-4 py-3 text-sm text-[#1a1a1a] placeholder-gray-400 focus:outline-none focus:border-[#c8a951]"
+            />
+          </div>
+
+          <!-- Service type -->
+          <div>
+            <label for="service" class="block text-sm font-semibold text-[#1a1a1a] uppercase tracking-wider mb-2">
+              Service Needed
+            </label>
+            <select
+              id="service"
+              name="service"
+              class="w-full border border-[#ede8df] bg-[#f8f4ed] px-4 py-3 text-sm text-[#1a1a1a] focus:outline-none focus:border-[#c8a951]"
+            >
+              <option value="">Select a service…</option>
+              <option value="buyer-package">Buyer Package</option>
+              <option value="refinance">Refinance Package</option>
+              <option value="poa-affidavit">Power of Attorney / Affidavit</option>
+              <option value="heloc-reverse">HELOC / Reverse Mortgage</option>
+              <option value="business-contract">Business Contract Notarization</option>
+              <option value="apostille">Apostille / Document Translation</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="message" class="block text-sm font-semibold text-[#1a1a1a] uppercase tracking-wider mb-2">
+              Message <span class="text-[#c8a951]">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              placeholder="Tell us about your signing needs, preferred date/time, and location…"
+              class="w-full border border-[#ede8df] bg-[#f8f4ed] px-4 py-3 text-sm text-[#1a1a1a] placeholder-gray-400 focus:outline-none focus:border-[#c8a951] resize-y"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="w-full bg-[#c8a951] text-[#1a1a1a] font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#d4b96a] transition-colors cursor-pointer border-0"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

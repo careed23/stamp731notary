@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_TITLE } from '../../consts';
+---
+
+<BaseLayout
+  title={`Message Sent | ${SITE_TITLE}`}
+  description="Thank you for contacting Stamp 731 Notary. We'll be in touch shortly."
+>
+  <section class="bg-[#f8f4ed] min-h-[70vh] flex items-center justify-center px-6 py-20">
+    <div class="text-center max-w-lg">
+      <div class="text-5xl mb-6">✉️</div>
+      <p class="section-label mb-4">Message Received</p>
+      <h1 class="font-serif text-4xl text-[#1a1a1a] mb-4">Thank You!</h1>
+      <div class="gold-rule"></div>
+      <p class="text-gray-600 mt-6 mb-10 leading-relaxed">
+        Your message has been sent successfully. Mallory will review your request
+        and get back to you as soon as possible — typically within one business day.
+      </p>
+      <a
+        href="/"
+        class="inline-block bg-[#1a1a1a] text-white font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#333] transition-colors no-underline"
+      >
+        Back to Home
+      </a>
+    </div>
+  </section>
+</BaseLayout>

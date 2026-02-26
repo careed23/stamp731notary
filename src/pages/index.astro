@@ -1,50 +1,176 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const whyMalloryItems = [
+  {
+    title: "Extension of your Company",
+    body: "We understand that we are an extension of your company and represent and answer all queries of signers in a professional capacity.",
+    icon: "🤝",
+  },
+  {
+    title: "Certified, Screened and Insured",
+    body: "I have undertaken NNA certifications, LSS certifications, and we are background screened and E&O insured.",
+    icon: "✅",
+  },
+  {
+    title: "Same-Day Delivery",
+    body: "We understand the need for same-day delivery and FedEx the documents before the cutoff time.",
+    icon: "📦",
+  },
+  {
+    title: "Punctual & Professional Communication",
+    body: "We arrive on-time every closing and keep communications open and responsive. Signers are reminded about appointments via our modern tech workflow.",
+    icon: "⏰",
+  },
+  {
+    title: "Scanbacks",
+    body: "We offer scanback services, ensuring swift document processing and client satisfaction. This streamlined approach enhances efficiency and peace of mind.",
+    icon: "📄",
+  },
+  {
+    title: "Responsive Communication",
+    body: "We understand the importance of ensuring everything is signed to avoid funding issues, and we stay in open communication to quickly resolve any issues.",
+    icon: "💬",
+  },
+];
+
+const services = [
+  {
+    title: "Buyer Packages",
+    body: "Expert in facilitating seamless transactions, offering comprehensive buyer packages and efficient notarization services to ensure peace of mind and legal compliance.",
+  },
+  {
+    title: "Refinance Packages",
+    body: "We validate mortgage, refinance, and HELOC documents for seamless loan transactions.",
+  },
+  {
+    title: "Power of Attorney and Affidavits",
+    body: "Empowering individuals with the legal authority to act on their behalf, offering comprehensive guidance and seamless execution of power of attorney documents.",
+  },
+  {
+    title: "HELOC and Reverse Mortgages",
+    body: "Specializing in HELOC and reverse mortgages, providing expert guidance and personalized solutions to empower clients in leveraging their home equity for financial freedom and security.",
+  },
+  {
+    title: "Business Contract Notarization",
+    body: "Your trusted partner in business contract notarization, ensuring legal compliance and peace of mind with meticulous attention to detail and seamless execution.",
+  },
+  {
+    title: "Apostille and Document Translations",
+    body: "Offering reliable apostille and certified document translation services, ensuring your legal, personal, and business documents are accurately authenticated and accepted worldwide with professionalism and efficiency.",
+  },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+
+  <!-- ── HERO ── -->
+  <section
+    class="relative min-h-[90vh] flex items-center justify-center text-white"
+    style="background-color:#1a1a1a;"
+  >
+    <!-- Background image with overlay -->
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image:url('/images/hero.jpg');"
+      aria-hidden="true"
+    ></div>
+    <div class="absolute inset-0 bg-black/60" aria-hidden="true"></div>
+
+    <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+      <p class="section-label mb-4">Premium Loan Signing Services</p>
+      <h1 class="font-serif text-4xl md:text-6xl font-normal leading-tight mb-6">
+        Stamp 731 Notary
+      </h1>
+      <div class="gold-rule"></div>
+      <p class="text-lg md:text-xl text-gray-200 mt-4 mb-10 max-w-2xl mx-auto">
+        Exemplary loan signing company dedicated to precision and client satisfaction.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-[#c8a951] text-[#1a1a1a] font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#d4b96a] transition-colors no-underline"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
+
+  <!-- ── WHY MALLORY ── -->
+  <section class="bg-[#f8f4ed] py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="section-label">About Us</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-[#1a1a1a] mt-2 mb-4">Why Mallory</h2>
+        <div class="gold-rule"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+          I represent you at the closing table, going above and beyond for our clients.
+          Here are some of our unique qualities.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {whyMalloryItems.map((item) => (
+          <div class="bg-white border border-[#ede8df] p-8 card-lift">
+            <div class="text-3xl mb-4">{item.icon}</div>
+            <h3 class="font-serif text-xl text-[#1a1a1a] mb-3">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OUR SERVICES ── -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="section-label">What We Offer</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-[#1a1a1a] mt-2 mb-4">Our Services</h2>
+        <div class="gold-rule"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+          Our assurance of seamless notarial services. Trust us to safeguard your documents
+          with precision and professionalism.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <div class="border-t-2 border-[#c8a951] bg-[#f8f4ed] p-8 card-lift">
+            <h3 class="font-serif text-xl text-[#1a1a1a] mb-3">{service.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{service.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT BANNER ── -->
+  <section
+    class="relative py-24 px-6 text-white text-center"
+    style="background-color:#1a1a1a;"
+  >
+    <div
+      class="absolute inset-0 bg-cover bg-center opacity-20"
+      style="background-image:url('/images/contact-banner.jpg');"
+      aria-hidden="true"
+    ></div>
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <p class="section-label mb-4">Ready to Get Started?</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">Let's Work Together</h2>
+      <div class="gold-rule"></div>
+      <p class="text-gray-300 mt-4 mb-10">
+        Contact us today to schedule your signing appointment or to learn more
+        about how we can serve your title company, escrow office, or lending team.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block border-2 border-[#c8a951] text-[#c8a951] font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#c8a951] hover:text-[#1a1a1a] transition-colors no-underline"
+      >
+        Contact Mallory
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
+

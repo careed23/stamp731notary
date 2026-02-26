@@ -1,62 +1,132 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_TITLE } from '../consts';
+
+const whyMalloryItems = [
+  {
+    title: "Extension of your Company",
+    body: "We understand that we are an extension of your company and represent and answer all queries of signers in a professional capacity.",
+    icon: "🤝",
+  },
+  {
+    title: "Certified, Screened and Insured",
+    body: "I have undertaken NNA certifications, LSS certifications, and we are background screened and E&O insured.",
+    icon: "✅",
+  },
+  {
+    title: "Same-Day Delivery",
+    body: "We understand the need for same-day delivery and FedEx the documents before the cutoff time.",
+    icon: "📦",
+  },
+  {
+    title: "Punctual & Professional Communication",
+    body: "We arrive on-time every closing and keep communications open and responsive. Signers are reminded about appointments via our modern tech workflow.",
+    icon: "⏰",
+  },
+  {
+    title: "Scanbacks",
+    body: "We offer scanback services, ensuring swift document processing and client satisfaction. This streamlined approach enhances efficiency and peace of mind.",
+    icon: "📄",
+  },
+  {
+    title: "Responsive Communication",
+    body: "We understand the importance of ensuring everything is signed to avoid funding issues, and we stay in open communication to quickly resolve any issues.",
+    icon: "💬",
+  },
+];
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
+<BaseLayout
+  title={`About | ${SITE_TITLE}`}
+  description="Learn why Mallory at Stamp 731 Notary is the premier loan signing agent — NNA-certified, background screened, E&O insured, and dedicated to same-day delivery."
 >
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+  <!-- Page header -->
+  <section class="bg-[#1a1a1a] py-24 px-6 text-white text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="section-label mb-4">Our Story</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-normal mb-4">Why Mallory</h1>
+      <div class="gold-rule"></div>
+    </div>
+  </section>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+  <!-- Headshot + intro -->
+  <section class="bg-[#f8f4ed] py-20 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <!-- Headshot -->
+      <div class="flex-shrink-0">
+        <div
+          class="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-[#c8a951] bg-[#ede8df] flex items-center justify-center"
+        >
+          <img
+            src="/images/headshot.png"
+            alt="Mallory — Stamp 731 Notary"
+            width="288"
+            height="288"
+            class="w-full h-full object-cover"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-6xl\'>👤</span>'"
+          />
+        </div>
+      </div>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+      <!-- Intro copy -->
+      <div>
+        <p class="section-label mb-3">About Mallory</p>
+        <h2 class="font-serif text-3xl text-[#1a1a1a] mb-4">
+          Your Trusted Notary Signing Agent
+        </h2>
+        <div class="w-12 h-0.5 bg-[#c8a951] mb-6"></div>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          I represent you at the closing table, going above and beyond for our clients.
+          Here are some of our unique qualities that set Stamp 731 Notary apart.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          With NNA and LSS certifications, full background screening, and E&amp;O insurance,
+          I bring professionalism and reliability to every single closing.
+        </p>
+      </div>
+    </div>
+  </section>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+  <!-- Why Mallory grid -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="section-label">What Sets Us Apart</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-[#1a1a1a] mt-2 mb-4">
+          Our Unique Qualities
+        </h2>
+        <div class="gold-rule"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {whyMalloryItems.map((item) => (
+          <div class="bg-[#f8f4ed] border border-[#ede8df] p-8 card-lift">
+            <div class="text-3xl mb-4">{item.icon}</div>
+            <h3 class="font-serif text-xl text-[#1a1a1a] mb-3">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="bg-[#1a1a1a] py-20 px-6 text-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="font-serif text-3xl mb-4">Ready to Schedule a Signing?</h2>
+      <div class="gold-rule"></div>
+      <p class="text-gray-300 mt-4 mb-8">
+        Reach out and let's discuss how Stamp 731 Notary can support your team.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block border-2 border-[#c8a951] text-[#c8a951] font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#c8a951] hover:text-[#1a1a1a] transition-colors no-underline"
+      >
+        Contact Us
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
+
