@@ -1,5 +1,112 @@
-<div class="flex-shrink-0 mx-auto md:mx-0">
-  <div class="w-[42rem] h-[42rem] md:w-[54rem] md:h-[54rem]">
-    <!-- Headshot image or content goes here -->
-  </div>
-</div>
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_TITLE } from '../consts';
+
+const credentials = [
+  { label: "NNA Certified Signing Agent", icon: "🏅" },
+  { label: "LSS Certified", icon: "📜" },
+  { label: "Background Screened", icon: "🔍" },
+  { label: "E&O Insured", icon: "🛡️" },
+];
+---
+
+<BaseLayout title={`About | ${SITE_TITLE}`} description="Learn more about Mallory, the notary behind Stamp 731 Notary — NNA-certified, background-screened, and dedicated to precision.">
+
+  <!-- ── PAGE HEADER ── -->
+  <section
+    class="relative py-24 px-6 text-white text-center"
+    style="background-color:#1a1a1a;"
+  >
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <p class="section-label mb-4">Get to Know Us</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-normal leading-tight mb-4">About Me</h1>
+      <div class="gold-rule"></div>
+    </div>
+  </section>
+
+  <!-- ── BIO ── -->
+  <section class="bg-[#f8f4ed] py-20 px-6">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+
+      <!-- Portrait placeholder -->
+      <div class="flex-shrink-0 mx-auto md:mx-0">
+        <div
+          class="w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-[#c8a951] overflow-hidden bg-[#ede8df] flex items-center justify-center"
+          role="img"
+          aria-label="Mallory portrait placeholder"
+        >
+          <span class="text-[#c8a951] font-bold text-6xl font-serif select-none" aria-hidden="true">M</span>
+        </div>
+      </div>
+
+      <!-- Bio text -->
+      <div class="flex-1 text-center md:text-left">
+        <p class="section-label mb-2">Mallory · Stamp 731 Notary</p>
+        <h2 class="font-serif text-3xl text-[#1a1a1a] mb-4">Hello, I'm Mallory</h2>
+        <div class="gold-rule md:mx-0"></div>
+        <p class="text-gray-700 leading-relaxed mt-4 mb-4">
+          I founded Stamp 731 Notary with one goal in mind: to be the most reliable and
+          professional signing agent your title company, escrow office, or lending team has
+          ever worked with. I treat every closing as if your reputation is on the line —
+          because it is.
+        </p>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          I show up on time, communicate proactively, and ensure every document is signed
+          correctly to avoid funding delays. Whether it's a standard buyer package, a reverse
+          mortgage, or a same-day rush closing, I bring the same level of care and precision
+          to every appointment.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          I am proud to serve clients across the region as a fully certified, insured, and
+          background-screened notary signing agent.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CREDENTIALS ── -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="section-label">Qualifications</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-[#1a1a1a] mt-2 mb-4">Credentials & Certifications</h2>
+        <div class="gold-rule"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+          I invest in ongoing education and compliance so you never have to worry about the
+          details at the closing table.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {credentials.map((c) => (
+          <div class="flex items-center gap-4 border border-[#ede8df] bg-[#f8f4ed] p-6 card-lift">
+            <span class="text-3xl">{c.icon}</span>
+            <span class="font-serif text-lg text-[#1a1a1a]">{c.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section
+    class="relative py-24 px-6 text-white text-center"
+    style="background-color:#1a1a1a;"
+  >
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <p class="section-label mb-4">Work With Me</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">Ready to Schedule a Signing?</h2>
+      <div class="gold-rule"></div>
+      <p class="text-gray-300 mt-4 mb-10">
+        Reach out today and let's make your next closing seamless.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block border-2 border-[#c8a951] text-[#c8a951] font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#c8a951] hover:text-[#1a1a1a] transition-colors no-underline"
+      >
+        Contact Mallory
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
