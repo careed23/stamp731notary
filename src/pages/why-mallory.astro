@@ -1,0 +1,253 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+
+const qualities = [
+	{
+		icon: "🏅",
+		title: "Certified & Credentialed",
+		desc: "Mallory holds active state notary commission and NNA-certified loan signing agent credentials, ensuring every notarization meets legal standards.",
+	},
+	{
+		icon: "⏱️",
+		title: "Always On Time",
+		desc: "Punctuality is a promise. Your time is valuable — Mallory arrives prepared, organized, and ready to get the job done efficiently.",
+	},
+	{
+		icon: "📍",
+		title: "Comes to You",
+		desc: "Mobile services throughout the 731 area — your home, office, hospital, or wherever you need. You don't have to rearrange your day.",
+	},
+	{
+		icon: "🔍",
+		title: "Detail-Oriented",
+		desc: "Every document is reviewed carefully before signing begins, catching potential issues early and saving you costly re-signings.",
+	},
+	{
+		icon: "🤝",
+		title: "Approachable & Professional",
+		desc: "Notarizations can feel intimidating. Mallory explains each step clearly and puts clients at ease throughout the process.",
+	},
+	{
+		icon: "🔒",
+		title: "Bonded & Insured",
+		desc: "Fully bonded with errors & omissions insurance for your protection and peace of mind on every transaction.",
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Why Mallory | ${SITE_TITLE}`}
+			description="Discover why clients across the 731 area trust Mallory for notary services — certified, punctual, mobile, and detail-oriented."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+
+			<!-- ── Page Hero ── -->
+			<section class="page-hero">
+				<div class="container page-hero-inner">
+					<p class="eyebrow">Your Notary, Your Way</p>
+					<h1>Why Choose Mallory?</h1>
+					<hr class="gold-divider" />
+					<p class="page-hero-sub">
+						Not all notaries are created equal. Here's what sets Mallory apart
+						and why clients across West Tennessee keep coming back.
+					</p>
+				</div>
+			</section>
+
+			<!-- ── Qualities Grid ── -->
+			<section class="qualities-section">
+				<div class="container">
+					<div class="qualities-grid">
+						{qualities.map((q) => (
+							<article class="quality-card">
+								<div class="quality-icon">{q.icon}</div>
+								<h3>{q.title}</h3>
+								<p>{q.desc}</p>
+							</article>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<!-- ── Bio / Photo Band ── -->
+			<section class="bio-band">
+				<div class="container bio-inner">
+					<div class="bio-photo-wrap">
+						<img
+							src="/assets/mallory-placeholder.svg"
+							alt="Mallory, Notary Public"
+							class="bio-photo"
+							width="320"
+							height="380"
+						/>
+					</div>
+					<div class="bio-text">
+						<p class="eyebrow">Meet Your Notary</p>
+						<h2>Hi, I'm Mallory</h2>
+						<hr class="gold-divider" style="margin-left:0;" />
+						<p>
+							I started Stamp 731 Notary because I saw a need for reliable,
+							client-first notary services right here in West Tennessee. Too
+							many people were stuck rearranging their schedules or driving
+							across town just to get a document signed.
+						</p>
+						<p>
+							I come to you — at home, at work, or wherever is most convenient.
+							With flexible hours and a commitment to getting it right the first
+							time, I'm here to make the process simple and stress-free.
+						</p>
+						<a href="/contact" class="btn btn-gold">Book an Appointment</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── CTA Banner ── -->
+			<section class="cta-band">
+				<div class="container cta-inner">
+					<h2>Ready to Work Together?</h2>
+					<p>Let's get your documents signed — on your schedule, at your location.</p>
+					<a href="/contact" class="btn btn-gold">Get in Touch</a>
+				</div>
+			</section>
+
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	/* ── Page Hero ── */
+	.page-hero {
+		background: var(--black);
+		padding: 4.5rem 1.5rem 4rem;
+		text-align: center;
+		border-bottom: 3px solid var(--gold);
+	}
+	.page-hero h1 {
+		color: var(--white);
+		margin-bottom: 0.5rem;
+	}
+	.eyebrow {
+		color: var(--gold);
+		font-size: 0.88rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		margin-bottom: 0.5rem;
+	}
+	.page-hero-sub {
+		color: rgba(255,255,255,0.78);
+		font-size: 1.1rem;
+		max-width: 560px;
+		margin: 0 auto;
+	}
+
+	/* ── Qualities Grid ── */
+	.qualities-section {
+		padding: var(--section-padding);
+		background: var(--cream);
+	}
+	.qualities-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 1.75rem;
+	}
+	.quality-card {
+		background: var(--white);
+		border-radius: 10px;
+		padding: 2rem 1.75rem;
+		box-shadow: var(--card-shadow);
+		border-left: 4px solid var(--gold);
+		transition: box-shadow 0.2s, transform 0.2s;
+	}
+	.quality-card:hover {
+		box-shadow: var(--card-shadow-hover);
+		transform: translateY(-3px);
+	}
+	.quality-icon {
+		font-size: 2.2rem;
+		margin-bottom: 0.75rem;
+	}
+	.quality-card h3 {
+		font-size: 1.15rem;
+		color: var(--black);
+		margin-bottom: 0.5rem;
+	}
+	.quality-card p {
+		color: var(--text-muted);
+		font-size: 0.97rem;
+		margin: 0;
+		line-height: 1.6;
+	}
+
+	/* ── Bio Band ── */
+	.bio-band {
+		background: var(--cream-dark);
+		padding: var(--section-padding);
+		border-top: 1px solid #e0d0b8;
+		border-bottom: 1px solid #e0d0b8;
+	}
+	.bio-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 3.5rem;
+		align-items: center;
+	}
+	.bio-photo-wrap {
+		flex-shrink: 0;
+	}
+	.bio-photo {
+		border-radius: 12px;
+		object-fit: cover;
+		box-shadow: var(--card-shadow);
+		border: 3px solid var(--gold);
+	}
+	.bio-text {
+		flex: 1;
+		min-width: 280px;
+	}
+	.bio-text h2 {
+		color: var(--black);
+		margin-bottom: 0.25rem;
+	}
+	.bio-text p {
+		color: var(--black-soft);
+		font-size: 1rem;
+		max-width: 520px;
+	}
+
+	/* ── CTA Band ── */
+	.cta-band {
+		background: var(--black);
+		background-image: linear-gradient(135deg, #1a1a1a 60%, #2a1f05);
+		padding: 4rem 1.5rem;
+		text-align: center;
+		border-top: 3px solid var(--gold);
+	}
+	.cta-inner h2 {
+		color: var(--gold);
+		margin-bottom: 0.75rem;
+	}
+	.cta-inner p {
+		color: rgba(255,255,255,0.78);
+		font-size: 1.05rem;
+		margin-bottom: 1.75rem;
+		max-width: 480px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	@media (max-width: 720px) {
+		.bio-inner { flex-direction: column; gap: 2rem; }
+		.bio-photo { width: 100%; max-width: 280px; height: auto; }
+	}
+</style>

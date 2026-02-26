@@ -1,64 +1,70 @@
-# Astro Starter Kit: Blog
+# Stamp 731 Notary — Marketing Website
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
+A professional marketing website for **Stamp 731 Notary**, built with [Astro](https://astro.build/) and deployed on [Cloudflare Workers](https://workers.cloudflare.com/) as a static site.
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+## Pages
 
-<!-- dash-content-start -->
+| Route | Description |
+|---|---|
+| `/` | Homepage — hero, services grid, contact CTA |
+| `/why-mallory` | Why choose Mallory — 6 feature tiles + bio |
+| `/contact` | Contact page — info + contact form |
 
-Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+## Theme
 
-Features:
+Gold (`#c9a84c`) / Cream (`#fdf8f0`) / Black (`#1a1a1a`) palette with card shadows and responsive layout.
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Built-in Observability logging
-
-<!-- dash-content-end -->
-
-## Getting Started
-
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+## 🚀 Local Development
 
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/astro-blog-starter-template
+npm install
+npm run dev        # starts dev server at http://localhost:4321
 ```
 
-A live public deployment of this template is available at [https://astro-blog-starter-template.templates.workers.dev](https://astro-blog-starter-template.templates.workers.dev)
+## 🏗️ Production Build
 
-## 🚀 Project Structure
+```bash
+npm run build      # outputs to ./dist/
+```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## ☁️ Cloudflare Deployment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+This project is configured for [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) via `@astrojs/cloudflare`.
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+### Deploy via Wrangler CLI
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+npm run build && npm run deploy
+# or
+wrangler deploy
+```
+
+### Deploy via Cloudflare Dashboard (Cloudflare Pages)
+
+1. Push your branch to GitHub.
+2. In the [Cloudflare Dashboard](https://dash.cloudflare.com/), go to **Workers & Pages → Create application → Pages → Connect to Git**.
+3. Select the repo and set the following build settings:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+4. Click **Save and Deploy**.
+
+## 📁 Assets
+
+Placeholder assets are in `/public/assets/`. Replace these with real images before going live:
+
+| File | Purpose |
+|---|---|
+| `public/assets/logo.svg` | Site logo (nav + footer) |
+| `public/assets/hero-bg.jpg` | Homepage hero background (1200×600+ recommended) |
+| `public/assets/mallory-placeholder.svg` | Mallory's headshot on Why Mallory page |
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+| Command | Action |
+|---|---|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start local dev server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build via Wrangler |
+| `npm run deploy` | Deploy to Cloudflare |
 
-| Command                           | Action                                           |
-| :-------------------------------- | :----------------------------------------------- |
-| `npm install`                     | Installs dependencies                            |
-| `npm run dev`                     | Starts local dev server at `localhost:4321`      |
-| `npm run build`                   | Build your production site to `./dist/`          |
-| `npm run preview`                 | Preview your build locally, before deploying     |
-| `npm run astro ...`               | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help`         | Get help using the Astro CLI                     |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare        |
-| `npm wrangler tail`               | View real-time logs for all Workers              |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).

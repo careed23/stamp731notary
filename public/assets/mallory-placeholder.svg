@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" fill="none">
+  <rect width="320" height="380" fill="#2d2d2d"/>
+  <!-- Person silhouette -->
+  <circle cx="160" cy="130" r="56" fill="#4a4a4a"/>
+  <path d="M48 380 C48 300 272 300 272 380" fill="#4a4a4a"/>
+  <!-- Gold accent border suggestion -->
+  <rect x="0" y="0" width="320" height="380" rx="0" stroke="#C9A84C" stroke-width="3" fill="none"/>
+  <text x="160" y="320" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#C9A84C" opacity="0.7">Replace with photo of Mallory</text>
+</svg>
