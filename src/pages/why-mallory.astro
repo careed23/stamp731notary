@@ -53,6 +53,15 @@ const qualities = [
 			<!-- ── Page Hero ── -->
 			<section class="page-hero">
 				<div class="container page-hero-inner">
+					<div class="hero-photo-wrap">
+						<img
+							src="/assets/mallory-placeholder.svg"
+							alt="Mallory, Notary Public"
+							class="hero-photo"
+							width="480"
+							height="570"
+						/>
+					</div>
 					<p class="eyebrow">Your Notary, Your Way</p>
 					<h1>Why Choose Mallory?</h1>
 					<hr class="gold-divider" />
@@ -81,15 +90,6 @@ const qualities = [
 			<!-- ── Bio / Photo Band ── -->
 			<section class="bio-band">
 				<div class="container bio-inner">
-					<div class="bio-photo-wrap">
-						<img
-							src="/assets/mallory-placeholder.svg"
-							alt="Mallory, Notary Public"
-							class="bio-photo"
-							width="320"
-							height="380"
-						/>
-					</div>
 					<div class="bio-text">
 						<p class="eyebrow">Meet Your Notary</p>
 						<h2>Hi, I'm Mallory</h2>
@@ -135,6 +135,20 @@ const qualities = [
 	.page-hero h1 {
 		color: var(--white);
 		margin-bottom: 0.5rem;
+	}
+	.hero-photo-wrap {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 2rem;
+	}
+	.hero-photo {
+		border-radius: 12px;
+		object-fit: cover;
+		box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+		border: 3px solid var(--gold);
+		width: 480px;
+		max-width: 90vw;
+		height: auto;
 	}
 	.eyebrow {
 		color: var(--gold);
@@ -202,15 +216,6 @@ const qualities = [
 		gap: 3.5rem;
 		align-items: center;
 	}
-	.bio-photo-wrap {
-		flex-shrink: 0;
-	}
-	.bio-photo {
-		border-radius: 12px;
-		object-fit: cover;
-		box-shadow: var(--card-shadow);
-		border: 3px solid var(--gold);
-	}
 	.bio-text {
 		flex: 1;
 		min-width: 280px;
@@ -248,6 +253,6 @@ const qualities = [
 
 	@media (max-width: 720px) {
 		.bio-inner { flex-direction: column; gap: 2rem; }
-		.bio-photo { width: 100%; max-width: 280px; height: auto; }
+		.hero-photo { width: 100%; max-width: 340px; height: auto; }
 	}
 </style>
