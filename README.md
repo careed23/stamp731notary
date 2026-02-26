@@ -56,7 +56,7 @@ Placeholder assets are in `/public/assets/`. Replace these with real images befo
 |---|---|
 | `public/assets/logo.svg` | Site logo (nav + footer) |
 | `public/assets/hero-bg.jpg` | Homepage hero background (1200×600+ recommended) |
-| `public/assets/mallory-placeholder.svg` | Mallory's headshot on Why Mallory page |
+| `public/assets/mallory-placeholder.png` | Mallory's headshot on Why Mallory page |
 
 ## 🧞 Commands
 
