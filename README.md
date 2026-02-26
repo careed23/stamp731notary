@@ -1,64 +1,102 @@
-# Astro Starter Kit: Blog
+# Stamp 731 Notary
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
+A premium loan-signing notary website built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/), featuring a black/gold/cream brand aesthetic.
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+## Pages
 
-<!-- dash-content-start -->
+| Route | Description |
+|-------|-------------|
+| `/` | **Home** — Hero section, Why Mallory, Our Services, Contact Banner |
+| `/about` | **About** — Full Why Mallory section with headshot |
+| `/contact` | **Contact** — Netlify Forms contact form |
 
-Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+---
 
-Features:
+## 🚀 Local Development
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Built-in Observability logging
+### Prerequisites
 
-<!-- dash-content-end -->
+- Node.js ≥ 22
+- npm
 
-## Getting Started
-
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+### Install dependencies
 
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/astro-blog-starter-template
+npm install
 ```
 
-A live public deployment of this template is available at [https://astro-blog-starter-template.templates.workers.dev](https://astro-blog-starter-template.templates.workers.dev)
+### Start dev server
 
-## 🚀 Project Structure
+```bash
+npm run dev
+```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+The site will be available at `http://localhost:4321`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Build for production
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+```bash
+npm run build
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+Static output goes to `./dist/`.
+
+---
+
+## 🌐 Deploying to Netlify
+
+1. Push this repository to GitHub (or GitLab / Bitbucket).
+2. Log in to [Netlify](https://app.netlify.com/) and click **"Add new site" → "Import an existing project"**.
+3. Connect your repository.
+4. Set the build settings:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+5. Click **Deploy site**.
+
+### Enable Netlify Forms notifications
+
+After your first deploy, Netlify will automatically detect the `data-netlify="true"` form.
+
+To receive email notifications for each submission:
+
+1. In the Netlify dashboard, navigate to your site.
+2. Go to **Site configuration → Forms → Form notifications**.
+3. Click **"Add notification" → Email notification**.
+4. Set the **email address** to `mallory@stamp731.com`.
+5. Save.
+
+> The form uses a honeypot field (`bot-field`) for spam protection — no additional CAPTCHA service is required.
+
+---
+
+## 🖼 Adding Real Images
+
+Replace the placeholder images in `public/images/` with your own:
+
+| File | Used in | Recommended size |
+|------|---------|-----------------|
+| `public/images/hero.jpg` | Home page hero background | 1920 × 1080 px (or larger) |
+| `public/images/contact-banner.jpg` | Home page contact banner overlay | 1920 × 600 px |
+| `public/images/headshot.png` | About page profile photo | 400 × 400 px (square) |
+
+The site is designed to work gracefully without these images — each section has a solid dark background fallback.
+
+---
+
+## 🎨 Brand Colours
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Brand Black | `#1a1a1a` | Backgrounds, nav, footer |
+| Brand Gold | `#c8a951` | Accents, borders, CTAs |
+| Brand Cream | `#f8f4ed` | Section backgrounds |
+
+---
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                           | Action                                           |
-| :-------------------------------- | :----------------------------------------------- |
-| `npm install`                     | Installs dependencies                            |
-| `npm run dev`                     | Starts local dev server at `localhost:4321`      |
-| `npm run build`                   | Build your production site to `./dist/`          |
-| `npm run preview`                 | Preview your build locally, before deploying     |
-| `npm run astro ...`               | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help`         | Get help using the Astro CLI                     |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare        |
-| `npm wrangler tail`               | View real-time logs for all Workers              |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+| Command | Action |
+|---------|--------|
+| `npm run dev` | Start local dev server at `localhost:4321` |
+| `npm run build` | Build production site to `./dist/` |
+| `npm run astro ...` | Run Astro CLI commands |
