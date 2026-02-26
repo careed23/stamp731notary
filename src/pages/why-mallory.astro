@@ -58,17 +58,17 @@ const qualities = [
 							src="/assets/mallory-placeholder.png"
 							alt="Mallory, Notary Public"
 							class="hero-photo"
-							width="480"
-							height="570"
+							width="240"
+							height="285"
 						/>
 					</div>
-					<p class="eyebrow">Your Notary, Your Way</p>
-					<h1>Why Choose Mallory?</h1>
-					<hr class="gold-divider" />
 					<p class="page-hero-sub">
 						Not all notaries are created equal. Here's what sets Mallory apart
 						and why clients across West Tennessee keep coming back.
 					</p>
+					<p class="eyebrow">Your Notary, Your Way</p>
+					<h1>Why Choose Mallory?</h1>
+					<hr class="gold-divider" />
 				</div>
 			</section>
 
@@ -127,7 +127,11 @@ const qualities = [
 <style>
 	/* ── Page Hero ── */
 	.page-hero {
-		background: var(--black);
+		background-image: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
+		                  url('/assets/background.png');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		padding: 4.5rem 1.5rem 4rem;
 		text-align: center;
 		border-bottom: 3px solid var(--gold);
@@ -146,23 +150,26 @@ const qualities = [
 		object-fit: cover;
 		box-shadow: 0 8px 32px rgba(0,0,0,0.45);
 		border: 3px solid var(--gold);
-		width: 480px;
+		width: 240px;
 		max-width: 90vw;
 		height: auto;
 	}
 	.eyebrow {
 		color: var(--gold);
-		font-size: 0.88rem;
+		font-size: 1.1rem;
 		font-weight: 700;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		margin-bottom: 0.5rem;
 	}
 	.page-hero-sub {
-		color: rgba(255,255,255,0.78);
-		font-size: 1.1rem;
-		max-width: 560px;
-		margin: 0 auto;
+		color: rgba(255,255,255,0.88);
+		font-size: 1.9rem;
+		font-family: Georgia, "Times New Roman", serif;
+		font-style: italic;
+		line-height: 1.5;
+		max-width: 680px;
+		margin: 0 auto 1.5rem;
 	}
 
 	/* ── Qualities Grid ── */
@@ -253,6 +260,6 @@ const qualities = [
 
 	@media (max-width: 720px) {
 		.bio-inner { flex-direction: column; gap: 2rem; }
-		.hero-photo { width: 100%; max-width: 340px; height: auto; }
+		.hero-photo { width: 100%; max-width: 240px; height: auto; }
 	}
 </style>
