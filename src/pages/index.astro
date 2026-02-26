@@ -47,13 +47,11 @@ const services = [
 		<Header />
 		<main>
 
-			<!-- ── Hero ── -->
 			<section class="hero">
 				<div class="hero-overlay"></div>
 				<div class="container hero-content">
 					<p class="hero-eyebrow">Serving the 731 Area</p>
-					<h1>Exemplary loan signing company dedicated
-                    to precision and client satisfaction</h1>
+					<h1>Exemplary loan signing company dedicated to precision and client satisfaction</h1>
 					<p class="hero-sub">
 						Mobile notary and loan signing services by Mallory — convenient,
 						thorough, and professional.
@@ -65,7 +63,6 @@ const services = [
 				</div>
 			</section>
 
-			<!-- ── Trust Bar ── -->
 			<section class="trust-bar">
 				<div class="container trust-bar-inner">
 					<div class="trust-item">
@@ -83,7 +80,6 @@ const services = [
 				</div>
 			</section>
 
-			<!-- ── Services ── -->
 			<section class="services-section" id="services">
 				<div class="container">
 					<h2 class="section-title">Our Services</h2>
@@ -103,7 +99,6 @@ const services = [
 				</div>
 			</section>
 
-			<!-- ── CTA / Contact Banner ── -->
 			<section class="cta-band">
 				<div class="container cta-inner">
 					<div class="cta-text">
@@ -115,7 +110,6 @@ const services = [
 					</div>
 					<div class="cta-actions">
 						<a href="/contact" class="btn btn-gold">Book Appointment</a>
-						<!-- TODO: Replace with actual business phone number before going live -->
 						<a href="tel:+17319991234" class="btn btn-white">(731) 999-1234</a>
 					</div>
 				</div>
@@ -130,12 +124,12 @@ const services = [
 	/* ── Hero ── */
 	.hero {
 		position: relative;
-		min-height: 520px;
+		min-height: 580px; /* Increased slightly for better visual balance */
 		display: flex;
 		align-items: center;
 		background: url('/assets/hero-bg.jpg') center/cover no-repeat,
-		            url('/assets/hero-bg.svg') center/cover no-repeat,
-		            var(--black);
+					url('/assets/hero-bg.svg') center/cover no-repeat,
+					var(--black);
 	}
 	.hero-overlay {
 		position: absolute;
@@ -147,7 +141,9 @@ const services = [
 		z-index: 1;
 		padding-top: 5rem;
 		padding-bottom: 5rem;
-		max-width: 680px;
+		/* Spread the content further across the page */
+		max-width: 1100px; 
+		width: 100%;
 	}
 	.hero-eyebrow {
 		color: var(--gold);
@@ -159,19 +155,24 @@ const services = [
 	}
 	.hero h1 {
 		color: var(--white);
-		margin-bottom: 1.25rem;
-		line-height: 1.15;
+		margin-bottom: 1.5rem;
+		line-height: 1.2;
+		/* Responsive font size: stays large but adapts */
+		font-size: clamp(2.2rem, 4.5vw, 3.8rem); 
+		/* Encourages text to occupy 2 lines and balance length */
+		text-wrap: balance; 
+		max-width: 950px;
 	}
 	.hero-sub {
 		color: rgba(255,255,255,0.82);
-		font-size: 1.15rem;
-		margin-bottom: 2rem;
-		max-width: 500px;
+		font-size: 1.2rem;
+		margin-bottom: 2.5rem;
+		max-width: 600px;
 	}
 	.hero-actions {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 1rem;
+		gap: 1.25rem;
 	}
 
 	/* ── Trust Bar ── */
@@ -190,7 +191,7 @@ const services = [
 		align-items: center;
 		gap: 0.5rem;
 		color: var(--cream);
-		padding: 1rem 2rem;
+		padding: 1.25rem 2.5rem;
 		font-size: 0.95rem;
 		font-weight: 600;
 		border-right: 1px solid rgba(255,255,255,0.1);
@@ -268,10 +269,12 @@ const services = [
 	}
 
 	@media (max-width: 720px) {
-		.hero { min-height: 400px; }
-		.trust-item { padding: 0.75rem 1rem; font-size: 0.85rem; }
-		.cta-inner { flex-direction: column; }
-		.cta-actions { width: 100%; }
+		.hero { min-height: 450px; }
+		.hero h1 { font-size: 2.2rem; }
+		.trust-item { padding: 0.75rem 1rem; font-size: 0.85rem; border-right: none; }
+		.cta-inner { flex-direction: column; text-align: center; }
+		.cta-text p { margin-bottom: 1.5rem; }
+		.cta-actions { width: 100%; justify-content: center; }
 		.cta-actions .btn { flex: 1; text-align: center; }
 	}
 </style>
