@@ -11,7 +11,8 @@ interface Props {
 }
 
 const { title, description, image } = Astro.props;
-const currentPath = Astro.url.pathname;
+// FIX: Added optional chaining and a fallback to prevent "undefined" crashes
+const currentPath = Astro.url?.pathname || '/';
 ---
 
 <!doctype html>
@@ -19,11 +20,10 @@ const currentPath = Astro.url.pathname;
   <head>
     <BaseHead title={title} description={description} image={image} />
   </head>
-  <body class="bg-primary text-gray-200 font-sans">
+  <body class="bg-[#0f1115] text-gray-200 font-sans">
 
     <Header currentPath={currentPath} />
 
-    <!-- Page content -->
     <main>
       <slot />
     </main>
