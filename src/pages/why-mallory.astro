@@ -1,265 +1,110 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_TITLE } from '../consts';
 
 const qualities = [
-	{
-		icon: "🏅",
-		title: "Certified & Credentialed",
-		desc: "Mallory holds active state notary commission and NNA-certified loan signing agent credentials, ensuring every notarization meets legal standards.",
-	},
-	{
-		icon: "⏱️",
-		title: "Always On Time",
-		desc: "Punctuality is a promise. Your time is valuable — Mallory arrives prepared, organized, and ready to get the job done efficiently.",
-	},
-	{
-		icon: "📍",
-		title: "Comes to You",
-		desc: "Mobile services throughout the 731 area — your home, office, hospital, or wherever you need. You don't have to rearrange your day.",
-	},
-	{
-		icon: "🔍",
-		title: "Detail-Oriented",
-		desc: "Every document is reviewed carefully before signing begins, catching potential issues early and saving you costly re-signings.",
-	},
-	{
-		icon: "🤝",
-		title: "Approachable & Professional",
-		desc: "Notarizations can feel intimidating. Mallory explains each step clearly and puts clients at ease throughout the process.",
-	},
-	{
-		icon: "🔒",
-		title: "Bonded & Insured",
-		desc: "Fully bonded with errors & omissions insurance for your protection and peace of mind on every transaction.",
-	},
+  {
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-accent"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>`,
+    title: "Certified & Credentialed",
+    desc: "Mallory holds active state notary commission and NNA-certified loan signing agent credentials, ensuring every notarization meets legal standards.",
+  },
+  {
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-accent"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>`,
+    title: "Always On Time",
+    desc: "Punctuality is a promise. Your time is valuable — Mallory arrives prepared, organized, and ready to get the job done efficiently.",
+  },
+  {
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-accent"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>`,
+    title: "Comes to You",
+    desc: "Mobile services throughout the 731 area — your home, office, hospital, or wherever you need. You don't have to rearrange your day.",
+  },
+  {
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-accent"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>`,
+    title: "Detail-Oriented",
+    desc: "Every document is reviewed carefully before signing begins, catching potential issues early and saving you costly re-signings.",
+  },
+  {
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-accent"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a4.5 4.5 0 0 0 2.343-3.375M6.72 18.72a4.5 4.5 0 0 0-2.343-3.375m0 0V9.457m4.072 10.114a.75.75 0 0 1-.721-1.085L7.477 9.582m6.836 10.114a.75.75 0 0 0 .721-1.085l-1.389-7.527m0 0-.17-1.041A5.4 5.4 0 0 0 12 5.061V3a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v1.277ZM17.25 9.457V5.06a5.4 5.4 0 0 0-1.705-3.952m-.102 9.017a.75.75 0 0 0 .721 1.085c.361-.194.67-.442.922-.727M12 14.004S17.25 10.5 17.25 10.5V5.062c0-1.084-.711-2.031-1.705-2.411M14.25 4.75h2.25M6 15.75h3.375c.591 0 .96-.51 1.14-.947l.502-1.125a1.125 1.125 0 0 1 1.74-.35h.001c.44-.06.848-.567.848-1.071 0-.511-.41-.992-.907-1.116l-1.477-.369M12 15.75S9.75 10.5 6 10.5V5.062c0-1.084.711-2.031 1.705-2.411H12M12 15.75a2.25 2.25 0 0 1 2.25 2.25M15.75 18H21C21.414 18 21.75 18.336 21.75 18.75c0 .243-.119.45-.304.576C20.26 20.457 17.5 21 12 21s-8.26-1.543-9.446-2.674C2.369 19.2 2.25 18.993 2.25 18.75 2.25 18.336 2.586 18 3 18H8.25m0 0a4.5 4.5 0 0 1 1.89-1.106M12 18a2.25 2.25 0 0 0 2.25-2.25V12a.75.75 0 0 0-.75-.75h-3.75a.75.75 0 0 0-.75.75v3.75c0 1.24.872 2.25 2.062 2.25H12Z" /></svg>`,
+    title: "Approachable & Professional",
+    desc: "Notarizations can feel intimidating. Mallory explains each step clearly and puts clients at ease throughout the process.",
+  },
+  {
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-accent"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>`,
+    title: "Bonded & Insured",
+    desc: "Fully bonded with errors & omissions insurance for your protection and peace of mind on every transaction.",
+  },
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title={`Why Mallory | ${SITE_TITLE}`}
-			description="Discover why clients across the 731 area trust Mallory for notary services — certified, punctual, mobile, and detail-oriented."
-		/>
-	</head>
-	<body>
-		<Header />
-		<main>
+<BaseLayout title={`Why Mallory | ${SITE_TITLE}`} description="Discover why clients across the 731 area trust Mallory for notary services — certified, punctual, mobile, and detail-oriented.">
 
-			<!-- ── Page Hero ── -->
-			<section class="page-hero">
-				<div class="container page-hero-inner">
-					<div class="hero-photo-wrap">
-						<img
-							src="/assets/mallory-placeholder.png"
-							alt="Mallory, Notary Public"
-							class="hero-photo"
-							width="240"
-							height="285"
-						/>
-					</div>
-					<p class="page-hero-sub">
-						Not all notaries are created equal. Here's what sets Mallory apart
-						and why clients across West Tennessee keep coming back.
-					</p>
-					<p class="eyebrow">Your Notary, Your Way</p>
-					<h1>Why Choose Mallory?</h1>
-					<hr class="gold-divider" />
-				</div>
-			</section>
+  <section class="bg-primary text-gray-200 py-16 px-6 sm:py-24">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="lg:order-2">
+        <img
+          src="/assets/mallory-placeholder.png"
+          alt="Mallory, Notary Public"
+          width="500"
+          height="600"
+          class="rounded-lg shadow-2xl w-full h-auto object-cover border-2 border-accent transform hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+      <div class="lg:order-1 text-center lg:text-left">
+        <p class="font-sans text-sm text-accent mb-2 tracking-widest uppercase">Meet Your Trusted Notary</p>
+        <h1 class="font-serif text-4xl md:text-5xl font-bold leading-tight mb-6 text-white">Hi, I'm Mallory</h1>
+        <div class="h-1 w-24 bg-accent mx-auto lg:mx-0 rounded-full mb-8"></div>
+        <p class="text-lg leading-relaxed mb-6">
+          I started Stamp 731 Notary because I saw a need for reliable,
+          client-first notary services right here in West Tennessee. Too
+          many people were stuck rearranging their schedules or driving
+          across town just to get a document signed.
+        </p>
+        <p class="text-lg leading-relaxed mb-8">
+          I come to you — at home, at work, or wherever is most convenient.
+          With flexible hours and a commitment to getting it right the first
+          time, I'm here to make the process simple and stress-free.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-10">
+          {qualities.map((q) => (
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 mt-1">
+                <Fragment set:html={q.svg} />
+              </div>
+              <div>
+                <h3 class="font-semibold text-white text-xl">{q.title}</h3>
+                <p class="text-gray-400 text-base">{q.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <a
+          href="/contact"
+          class="inline-block bg-accent text-primary font-sans font-semibold text-base tracking-wider uppercase px-8 py-4 rounded-full hover:bg-opacity-90 transition-all duration-300 no-underline shadow-lg transform hover:scale-105"
+        >
+          Book an Appointment
+        </a>
+      </div>
+    </div>
+  </section>
 
-			<!-- ── Qualities Grid ── -->
-			<section class="qualities-section">
-				<div class="container">
-					<div class="qualities-grid">
-						{qualities.map((q) => (
-							<article class="quality-card">
-								<div class="quality-icon">{q.icon}</div>
-								<h3>{q.title}</h3>
-								<p>{q.desc}</p>
-							</article>
-						))}
-					</div>
-				</div>
-			</section>
+  <!-- ── CTA Banner ── -->
+  <section
+    class="relative py-20 px-6 text-white text-center bg-gray-900"
+  >
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <p class="font-sans text-sm text-accent mb-4 tracking-widest uppercase">Ready to Get Started?</p>
+      <h2 class="font-serif text-4xl md:text-5xl mb-4">Let's Work Together</h2>
+      <div class="h-1 w-24 bg-accent mx-auto rounded-full"></div>
+      <p class="text-gray-300 mt-6 mb-10 text-lg">
+        Let's get your documents signed — on your schedule, at your location.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block border-2 border-accent text-accent font-sans font-semibold text-base tracking-wider uppercase px-8 py-4 rounded-full hover:bg-accent hover:text-primary transition-colors duration-300 no-underline shadow-lg transform hover:scale-105"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
 
-			<!-- ── Bio / Photo Band ── -->
-			<section class="bio-band">
-				<div class="container bio-inner">
-					<div class="bio-text">
-						<p class="eyebrow">Meet Your Notary</p>
-						<h2>Hi, I'm Mallory</h2>
-						<hr class="gold-divider" style="margin-left:0;" />
-						<p>
-							I started Stamp 731 Notary because I saw a need for reliable,
-							client-first notary services right here in West Tennessee. Too
-							many people were stuck rearranging their schedules or driving
-							across town just to get a document signed.
-						</p>
-						<p>
-							I come to you — at home, at work, or wherever is most convenient.
-							With flexible hours and a commitment to getting it right the first
-							time, I'm here to make the process simple and stress-free.
-						</p>
-						<a href="/contact" class="btn btn-gold">Book an Appointment</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- ── CTA Banner ── -->
-			<section class="cta-band">
-				<div class="container cta-inner">
-					<h2>Ready to Work Together?</h2>
-					<p>Let's get your documents signed — on your schedule, at your location.</p>
-					<a href="/contact" class="btn btn-gold">Get in Touch</a>
-				</div>
-			</section>
-
-		</main>
-		<Footer />
-	</body>
-</html>
-
-<style>
-	/* ── Page Hero ── */
-	.page-hero {
-		background-image: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
-		                  url('/assets/background.png');
-		background-size: cover;
-		background-position: left center;
-		background-repeat: no-repeat;
-		padding: 4.5rem 1.5rem 4rem;
-		text-align: center;
-		border-bottom: 3px solid var(--gold);
-	}
-	.page-hero h1 {
-		color: var(--white);
-		margin-bottom: 0.5rem;
-	}
-	.hero-photo-wrap {
-		display: flex;
-		justify-content: center;
-		margin-bottom: 2rem;
-	}
-	.hero-photo {
-		border-radius: 12px;
-		object-fit: cover;
-		box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-		border: 3px solid var(--gold);
-		width: 240px;
-		max-width: 90vw;
-		height: auto;
-	}
-	.eyebrow {
-		color: var(--gold);
-		font-size: 1.1rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		margin-bottom: 0.5rem;
-	}
-	.page-hero-sub {
-		color: rgba(255,255,255,0.88);
-		font-size: 1.9rem;
-		font-family: Georgia, "Times New Roman", serif;
-		font-style: italic;
-		line-height: 1.5;
-		max-width: 680px;
-		margin: 0 auto 1.5rem;
-	}
-
-	/* ── Qualities Grid ── */
-	.qualities-section {
-		padding: var(--section-padding);
-		background: var(--cream);
-	}
-	.qualities-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		gap: 1.75rem;
-	}
-	.quality-card {
-		background: var(--white);
-		border-radius: 10px;
-		padding: 2rem 1.75rem;
-		box-shadow: var(--card-shadow);
-		border-left: 4px solid var(--gold);
-		transition: box-shadow 0.2s, transform 0.2s;
-	}
-	.quality-card:hover {
-		box-shadow: var(--card-shadow-hover);
-		transform: translateY(-3px);
-	}
-	.quality-icon {
-		font-size: 2.2rem;
-		margin-bottom: 0.75rem;
-	}
-	.quality-card h3 {
-		font-size: 1.15rem;
-		color: var(--black);
-		margin-bottom: 0.5rem;
-	}
-	.quality-card p {
-		color: var(--text-muted);
-		font-size: 0.97rem;
-		margin: 0;
-		line-height: 1.6;
-	}
-
-	/* ── Bio Band ── */
-	.bio-band {
-		background: var(--cream-dark);
-		padding: var(--section-padding);
-		border-top: 1px solid #e0d0b8;
-		border-bottom: 1px solid #e0d0b8;
-	}
-	.bio-inner {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 3.5rem;
-		align-items: center;
-	}
-	.bio-text {
-		flex: 1;
-		min-width: 280px;
-	}
-	.bio-text h2 {
-		color: var(--black);
-		margin-bottom: 0.25rem;
-	}
-	.bio-text p {
-		color: var(--black-soft);
-		font-size: 1rem;
-		max-width: 520px;
-	}
-
-	/* ── CTA Band ── */
-	.cta-band {
-		background: var(--black);
-		background-image: linear-gradient(135deg, #1a1a1a 60%, #2a1f05);
-		padding: 4rem 1.5rem;
-		text-align: center;
-		border-top: 3px solid var(--gold);
-	}
-	.cta-inner h2 {
-		color: var(--gold);
-		margin-bottom: 0.75rem;
-	}
-	.cta-inner p {
-		color: rgba(255,255,255,0.78);
-		font-size: 1.05rem;
-		margin-bottom: 1.75rem;
-		max-width: 480px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	@media (max-width: 720px) {
-		.bio-inner { flex-direction: column; gap: 2rem; }
-		.hero-photo { width: 100%; max-width: 240px; height: auto; }
-	}
-</style>
+</BaseLayout>

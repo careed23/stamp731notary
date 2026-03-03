@@ -1,151 +1,126 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE } from "../consts";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" }, // Assuming a new services page
+  { name: "Contact", href: "/contact" },
+];
 ---
 
-<header>
-	<div class="header-inner container">
-		<a href="/" class="brand">
-			<img src="/assets/logo.png" alt="Stamp 731 Notary logo" class="brand-logo" width="44" height="44" />
-			<span class="brand-name">{SITE_TITLE}</span>
-		</a>
+<header class="bg-primary sticky top-0 z-50 shadow-lg">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo / Brand -->
+    <a href="/" class="flex items-center gap-3 no-underline group">
+      <div class="w-10 h-10 rounded-full border-2 border-accent flex items-center justify-center">
+        <span class="text-accent font-bold text-sm">S7</span>
+      </div>
+      <span class="text-white font-serif text-lg tracking-wide group-hover:text-accent transition-colors">
+        {SITE_TITLE}
+      </span>
+    </a>
 
-		<!-- Hamburger for mobile -->
-		<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="menuToggle">
-			<span></span><span></span><span></span>
-		</button>
+    <!-- Desktop Nav links -->
+    <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "text-sm tracking-widest uppercase font-sans no-underline transition-colors",
+                currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href + "/"))
+                  ? "text-accent"
+                  : "text-gray-200 hover:text-accent",
+              ]}
+            >{link.name}</a>
+          </li>
+        ))
+      }
+    </ul>
 
-		<nav id="mainNav">
-			<a href="/" class="nav-link">Home</a>
-			<a href="/why-mallory" class="nav-link">Why Mallory</a>
-			<a href="/contact" class="nav-link nav-cta">Book Now</a>
-		</nav>
-	</div>
+    <!-- Mobile Menu Button -->
+    <div class="md:hidden">
+      <button id="mobile-menu-button" class="text-gray-200 hover:text-accent focus:outline-none" aria-label="Toggle mobile menu" aria-controls="mobile-menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="hidden md:hidden bg-primary shadow-lg py-4 px-6 absolute w-full left-0 right-0 top-full">
+    <ul class="flex flex-col gap-4 list-none m-0 p-0">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "block text-base tracking-wider uppercase font-sans no-underline py-2 transition-colors",
+                currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href + "/"))
+                  ? "text-accent"
+                  : "text-gray-200 hover:text-accent",
+              ]}
+            >{link.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
 
-<script>
-	const toggle = document.getElementById('menuToggle');
-	const nav = document.getElementById('mainNav');
-	toggle?.addEventListener('click', () => {
-		const expanded = toggle.getAttribute('aria-expanded') === 'true';
-		toggle.setAttribute('aria-expanded', String(!expanded));
-		nav?.classList.toggle('open');
-	});
+<script is:inline>
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (mobileMenuButton && mobileMenu) {
+    const toggleMenu = () => {
+      const isHidden = mobileMenu.classList.toggle("hidden");
+      mobileMenuButton.setAttribute("aria-expanded", String(!isHidden));
+    };
+
+    mobileMenuButton.addEventListener("click", toggleMenu);
+
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", toggleMenu);
+    });
+
+    // Close mobile menu on Escape key press
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+        toggleMenu();
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", (event) => {
+      if (
+        !mobileMenu.classList.contains("hidden") &&
+        !mobileMenu.contains(event.target) &&
+        !mobileMenuButton.contains(event.target)
+      ) {
+        toggleMenu();
+      }
+    });
+
+    // Close mobile menu on resize to desktop
+    const mediaQuery = window.matchMedia("(min-width: 768px)"); // md breakpoint
+    const handleMediaQueryChange = (event) => {
+      if (event.matches && !mobileMenu.classList.contains("hidden")) {
+        toggleMenu();
+      }
+    };
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    // Initial check for desktop size if page loads on desktop
+    handleMediaQueryChange(mediaQuery);
+  }
 </script>
-
-<style>
-	header {
-		position: sticky;
-		top: 0;
-		z-index: 100;
-		background: var(--black);
-		border-bottom: 3px solid var(--gold);
-	}
-
-	.header-inner {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding-top: 0.85rem;
-		padding-bottom: 0.85rem;
-	}
-
-	/* Brand */
-	.brand {
-		display: flex;
-		align-items: center;
-		gap: 0.6rem;
-		text-decoration: none;
-	}
-	.brand-logo {
-		border-radius: 4px;
-		flex-shrink: 0;
-	}
-	.brand-name {
-		color: var(--gold);
-		font-weight: 700;
-		font-size: 1.15rem;
-		letter-spacing: 0.02em;
-		line-height: 1.2;
-	}
-
-	/* Nav */
-	nav {
-		display: flex;
-		align-items: center;
-		gap: 0.25rem;
-	}
-	.nav-link {
-		color: var(--cream);
-		text-decoration: none;
-		padding: 0.5rem 1rem;
-		border-radius: 4px;
-		font-size: 0.97rem;
-		font-weight: 600;
-		transition: color 0.15s, background 0.15s;
-	}
-	.nav-link:hover {
-		color: var(--gold);
-	}
-	.nav-cta {
-		background: var(--gold);
-		color: var(--black) !important;
-		margin-left: 0.5rem;
-	}
-	.nav-cta:hover {
-		background: var(--gold-dark);
-		color: var(--white) !important;
-	}
-
-	/* Active link highlight via CSS attribute trick */
-	.nav-link[data-active="true"] {
-		color: var(--gold);
-	}
-
-	/* Hamburger */
-	.menu-toggle {
-		display: none;
-		flex-direction: column;
-		gap: 5px;
-		background: none;
-		border: none;
-		cursor: pointer;
-		padding: 4px;
-	}
-	.menu-toggle span {
-		display: block;
-		width: 24px;
-		height: 2px;
-		background: var(--gold);
-		border-radius: 2px;
-		transition: 0.3s;
-	}
-
-	@media (max-width: 720px) {
-		.menu-toggle {
-			display: flex;
-		}
-		nav {
-			display: none;
-			position: absolute;
-			top: 100%;
-			left: 0;
-			right: 0;
-			background: var(--black-soft);
-			flex-direction: column;
-			padding: 1rem 1.5rem 1.5rem;
-			gap: 0.5rem;
-			border-bottom: 2px solid var(--gold);
-		}
-		nav.open {
-			display: flex;
-		}
-		.nav-link {
-			width: 100%;
-			padding: 0.6rem 0.5rem;
-		}
-		.nav-cta {
-			margin-left: 0;
-			text-align: center;
-		}
-	}
-</style>

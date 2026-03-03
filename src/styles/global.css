@@ -1,27 +1,22 @@
 @import "tailwindcss";
 
-/* ── Brand colour tokens ── */
-@theme {
-  --color-brand-black:  #1a1a1a;
-  --color-brand-gold:   #c8a951;
-  --color-brand-gold-light: #d4b96a;
-  --color-brand-cream:  #f8f4ed;
-  --color-brand-cream-dark: #ede8df;
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/fonts/atkinson-regular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("/fonts/atkinson-bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
 }
 
 /* ── Base resets ── */
 *, *::before, *::after { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  background-color: #ffffff;
-  color: #1a1a1a;
-  line-height: 1.7;
-}
-
-/* ── Utility helpers ── */
 .sr-only {
   position: absolute !important;
   width: 1px;
@@ -38,17 +33,17 @@ body {
 .gold-rule {
   width: 3rem;
   height: 2px;
-  background-color: #c8a951;
+  background-color: #D4AF37; /* Using the new accent color */
   margin: 0.75rem auto 1.25rem;
 }
 
 /* ── Section label (small caps / tracking) ── */
 .section-label {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Atkinson Hyperlegible", sans-serif; /* Using new sans-serif font */
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #c8a951;
+  color: #D4AF37; /* Using the new accent color */
 }
 
 /* ── Card hover lift ── */
