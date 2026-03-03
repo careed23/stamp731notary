@@ -12,3 +12,7 @@
 	},
 	"upload_source_maps": true
 }
+{
+  "pages_build_output_dir": "dist",
+  "name": "stamp731notary"
+}
