@@ -59,3 +59,38 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
+
+/* ── Forms ── */
+input,
+textarea,
+select {
+	font-family: inherit;
+	font-size: 1rem;
+	border: 1.5px solid #d4c5a9;
+	border-radius: 4px;
+	padding: 0.65rem 1rem;
+	background: var(--white);
+	color: var(--black);
+	width: 100%;
+	transition: border-color 0.2s;
+}
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+	border-color: var(--gold);
+}
+textarea {
+	resize: vertical;
+	min-height: 130px;
+}
+label {
+	display: block;
+	font-weight: 700;
+	margin-bottom: 0.35rem;
+	font-size: 0.95rem;
+}
+
+@media (max-width: 720px) {
+	body { font-size: 16px; }
+}
