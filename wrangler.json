@@ -1,18 +1,15 @@
 {
-	"name": "stamp731notary",
-	"compatibility_date": "2025-10-08",
-	"compatibility_flags": ["nodejs_compat"],
-	"main": "./dist/_worker.js/index.js",
-	"assets": {
-		"directory": "./dist",
-		"binding": "ASSETS"
-	},
-	"observability": {
-		"enabled": true
-	},
-	"upload_source_maps": true
-}
-{
+  "name": "stamp731notary",
+  "compatibility_date": "2025-10-08",
+  "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": "dist",
-  "name": "stamp731notary"
+  "main": "./dist/_worker.js/index.js",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true
 }
