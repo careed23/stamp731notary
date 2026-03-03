@@ -6,7 +6,7 @@
   "main": "./dist/_worker.js/index.js",
   "assets": {
     "directory": "./dist",
-    "binding": "ASSETS"
+    "binding": "MY_ASSETS"
   },
   "observability": {
     "enabled": true
