@@ -1,0 +1,90 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE } from '../consts';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body class="bg-white text-[#1a1a1a]">
+
+    <!-- Navigation -->
+    <header class="bg-[#1a1a1a] sticky top-0 z-50">
+      <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <!-- Logo / Brand -->
+        <a href="/" class="flex items-center gap-3 no-underline group">
+          <div class="w-10 h-10 rounded-full border-2 border-[#c8a951] flex items-center justify-center">
+            <span class="text-[#c8a951] font-bold text-sm">S7</span>
+          </div>
+          <span class="text-white font-serif text-lg tracking-wide group-hover:text-[#c8a951] transition-colors">
+            {SITE_TITLE}
+          </span>
+        </a>
+
+        <!-- Nav links -->
+        <ul class="flex items-center gap-8 list-none m-0 p-0">
+          <li>
+            <a
+              href="/"
+              class:list={[
+                "text-sm tracking-widest uppercase font-sans no-underline transition-colors",
+                currentPath === "/" ? "text-[#c8a951]" : "text-white hover:text-[#c8a951]"
+              ]}
+            >Home</a>
+          </li>
+          <li>
+            <a
+              href="/about"
+              class:list={[
+                "text-sm tracking-widest uppercase font-sans no-underline transition-colors",
+                currentPath === "/about" || currentPath === "/about/" ? "text-[#c8a951]" : "text-white hover:text-[#c8a951]"
+              ]}
+            >About</a>
+          </li>
+          <li>
+            <a
+              href="/contact"
+              class:list={[
+                "text-sm tracking-widest uppercase font-sans no-underline transition-colors",
+                currentPath === "/contact" || currentPath === "/contact/" ? "text-[#c8a951]" : "text-white hover:text-[#c8a951]"
+              ]}
+            >Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Page content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1a1a1a] text-white py-12 px-6">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <p class="font-serif text-lg text-[#c8a951] mb-1">{SITE_TITLE}</p>
+          <p class="text-sm text-gray-400">Exemplary Loan Signing — Precision &amp; Professionalism</p>
+        </div>
+        <ul class="flex gap-6 list-none m-0 p-0">
+          <li><a href="/" class="text-sm text-gray-400 hover:text-[#c8a951] no-underline transition-colors">Home</a></li>
+          <li><a href="/about" class="text-sm text-gray-400 hover:text-[#c8a951] no-underline transition-colors">About</a></li>
+          <li><a href="/contact" class="text-sm text-gray-400 hover:text-[#c8a951] no-underline transition-colors">Contact</a></li>
+        </ul>
+        <p class="text-xs text-gray-500">&copy; {new Date().getFullYear()} {SITE_TITLE}. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

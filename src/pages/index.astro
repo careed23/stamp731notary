@@ -1,279 +1,176 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
+const whyMalloryItems = [
+  {
+    title: "Extension of your Company",
+    body: "We understand that we are an extension of your company and represent and answer all queries of signers in a professional capacity.",
+    icon: "🤝",
+  },
+  {
+    title: "Certified, Screened and Insured",
+    body: "I have undertaken NNA certifications, LSS certifications, and we are background screened and E&O insured.",
+    icon: "✅",
+  },
+  {
+    title: "Same-Day Delivery",
+    body: "We understand the need for same-day delivery and FedEx the documents before the cutoff time.",
+    icon: "📦",
+  },
+  {
+    title: "Punctual & Professional Communication",
+    body: "We arrive on-time every closing and keep communications open and responsive. Signers are reminded about appointments via our modern tech workflow.",
+    icon: "⏰",
+  },
+  {
+    title: "Scanbacks",
+    body: "We offer scanback services, ensuring swift document processing and client satisfaction. This streamlined approach enhances efficiency and peace of mind.",
+    icon: "📄",
+  },
+  {
+    title: "Responsive Communication",
+    body: "We understand the importance of ensuring everything is signed to avoid funding issues, and we stay in open communication to quickly resolve any issues.",
+    icon: "💬",
+  },
+];
+
 const services = [
-	{
-		icon: "📄",
-		title: "General Notarizations",
-		desc: "Affidavits, acknowledgments, jurats, copy certifications, and more — handled with precision and care.",
-	},
-	{
-		icon: "🏠",
-		title: "Real Estate Closings",
-		desc: "Loan signings, deeds of trust, refinances, and purchase closings performed at your home, office, or preferred location.",
-	},
-	{
-		icon: "⚖️",
-		title: "Legal Documents",
-		desc: "Powers of attorney, living wills, trust documents, and other legal paperwork notarized with attention to detail.",
-	},
-	{
-		icon: "🚗",
-		title: "Mobile Notary",
-		desc: "Can't come to us? We come to you. Mobile services available throughout the greater 731 area.",
-	},
-	{
-		icon: "🕐",
-		title: "After-Hours & Weekends",
-		desc: "Life doesn't keep office hours. Evening and weekend appointments available by request.",
-	},
-	{
-		icon: "✍️",
-		title: "Loan Signing Agent",
-		desc: "Certified and experienced loan signing agent, ensuring smooth, error-free mortgage and refinance closings.",
-	},
+  {
+    title: "Buyer Packages",
+    body: "Expert in facilitating seamless transactions, offering comprehensive buyer packages and efficient notarization services to ensure peace of mind and legal compliance.",
+  },
+  {
+    title: "Refinance Packages",
+    body: "We validate mortgage, refinance, and HELOC documents for seamless loan transactions.",
+  },
+  {
+    title: "Power of Attorney and Affidavits",
+    body: "Empowering individuals with the legal authority to act on their behalf, offering comprehensive guidance and seamless execution of power of attorney documents.",
+  },
+  {
+    title: "HELOC and Reverse Mortgages",
+    body: "Specializing in HELOC and reverse mortgages, providing expert guidance and personalized solutions to empower clients in leveraging their home equity for financial freedom and security.",
+  },
+  {
+    title: "Business Contract Notarization",
+    body: "Your trusted partner in business contract notarization, ensuring legal compliance and peace of mind with meticulous attention to detail and seamless execution.",
+  },
+  {
+    title: "Apostille and Document Translations",
+    body: "Offering reliable apostille and certified document translation services, ensuring your legal, personal, and business documents are accurately authenticated and accepted worldwide with professionalism and efficiency.",
+  },
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} image="/assets/hero-bg.jpg" />
-	</head>
-	<body>
-		<Header />
-		<main>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 
-			<section class="hero">
-				<div class="hero-overlay"></div>
-				<div class="container hero-content">
-					<p class="hero-eyebrow">Serving the 731 Area</p>
-					<h1>Exemplary loan signing company dedicated to precision and client satisfaction</h1>
-					<p class="hero-sub">
-						Mobile notary and loan signing services by Mallory — convenient,
-						thorough, and professional.
-					</p>
-					<div class="hero-actions">
-						<a href="/contact" class="btn btn-gold">Schedule an Appointment</a>
-						<a href="/why-mallory" class="btn btn-outline">Why Mallory?</a>
-					</div>
-				</div>
-			</section>
+  <!-- ── HERO ── -->
+  <section
+    class="relative min-h-[90vh] flex items-center justify-center text-white"
+    style="background-color:#1a1a1a;"
+  >
+    <!-- Background image with overlay -->
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image:url('/images/hero.jpg');"
+      aria-hidden="true"
+    ></div>
+    <div class="absolute inset-0 bg-black/60" aria-hidden="true"></div>
 
-			<section class="trust-bar">
-				<div class="container trust-bar-inner">
-					<div class="trust-item">
-						<span class="trust-icon">🏅</span>
-						<span>Certified Notary Public</span>
-					</div>
-					<div class="trust-item">
-						<span class="trust-icon">📍</span>
-						<span>Mobile &amp; On-Location</span>
-					</div>
-					<div class="trust-item">
-						<span class="trust-icon">⏰</span>
-						<span>Flexible Scheduling</span>
-					</div>
-				</div>
-			</section>
+    <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+      <p class="section-label mb-4">Premium Loan Signing Services</p>
+      <h1 class="font-serif text-4xl md:text-6xl font-normal leading-tight mb-6">
+        Stamp 731 Notary
+      </h1>
+      <div class="gold-rule"></div>
+      <p class="text-lg md:text-xl text-gray-200 mt-4 mb-10 max-w-2xl mx-auto">
+        Exemplary loan signing company dedicated to precision and client satisfaction.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-[#c8a951] text-[#1a1a1a] font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#d4b96a] transition-colors no-underline"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
 
-			<section class="services-section" id="services">
-				<div class="container">
-					<h2 class="section-title">Our Services</h2>
-					<hr class="gold-divider" />
-					<p class="section-subtitle">
-						From everyday notarizations to complex real estate closings, we handle it all.
-					</p>
-					<div class="services-grid">
-						{services.map((s) => (
-							<article class="service-card">
-								<div class="service-icon">{s.icon}</div>
-								<h3>{s.title}</h3>
-								<p>{s.desc}</p>
-							</article>
-						))}
-					</div>
-				</div>
-			</section>
+  <!-- ── WHY MALLORY ── -->
+  <section class="bg-[#f8f4ed] py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="section-label">About Us</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-[#1a1a1a] mt-2 mb-4">Why Mallory</h2>
+        <div class="gold-rule"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+          I represent you at the closing table, going above and beyond for our clients.
+          Here are some of our unique qualities.
+        </p>
+      </div>
 
-			<section class="cta-band">
-				<div class="container cta-inner">
-					<div class="cta-text">
-						<h2>Ready to Get Started?</h2>
-						<p>
-							Book an appointment today — in person, mobile, or after hours.
-							Quick turnaround and friendly service every time.
-						</p>
-					</div>
-					<div class="cta-actions">
-						<a href="/contact" class="btn btn-gold">Book Appointment</a>
-						<a href="tel:+17319991234" class="btn btn-white">(731) 415-0708</a>
-					</div>
-				</div>
-			</section>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {whyMalloryItems.map((item) => (
+          <div class="bg-white border border-[#ede8df] p-8 card-lift">
+            <div class="text-3xl mb-4">{item.icon}</div>
+            <h3 class="font-serif text-xl text-[#1a1a1a] mb-3">{item.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-		</main>
-		<Footer />
-	</body>
-</html>
+  <!-- ── OUR SERVICES ── -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="section-label">What We Offer</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-[#1a1a1a] mt-2 mb-4">Our Services</h2>
+        <div class="gold-rule"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+          Our assurance of seamless notarial services. Trust us to safeguard your documents
+          with precision and professionalism.
+        </p>
+      </div>
 
-<style>
-	/* ── Hero ── */
-	.hero {
-		position: relative;
-		min-height: 580px; /* Increased slightly for better visual balance */
-		display: flex;
-		align-items: center;
-		background: url('/assets/background.png') center/cover no-repeat,
-					var(--black);
-	}
-	.hero-overlay {
-		position: absolute;
-		inset: 0;
-		background: rgba(10, 8, 4, 0.72);
-	}
-	.hero-content {
-		position: relative;
-		z-index: 1;
-		padding-top: 5rem;
-		padding-bottom: 5rem;
-		/* Spread the content further across the page */
-		max-width: 1100px; 
-		width: 100%;
-	}
-	.hero-eyebrow {
-		color: var(--gold);
-		font-weight: 700;
-		font-size: 0.9rem;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		margin-bottom: 0.75rem;
-	}
-	.hero h1 {
-		color: var(--white);
-		margin-bottom: 1.5rem;
-		line-height: 1.2;
-		/* Responsive font size: stays large but adapts */
-		font-size: clamp(2.2rem, 4.5vw, 3.8rem); 
-		/* Encourages text to occupy 2 lines and balance length */
-		text-wrap: balance; 
-		max-width: 950px;
-	}
-	.hero-sub {
-		color: rgba(255,255,255,0.82);
-		font-size: 1.2rem;
-		margin-bottom: 2.5rem;
-		max-width: 600px;
-	}
-	.hero-actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1.25rem;
-	}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <div class="border-t-2 border-[#c8a951] bg-[#f8f4ed] p-8 card-lift">
+            <h3 class="font-serif text-xl text-[#1a1a1a] mb-3">{service.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{service.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-	/* ── Trust Bar ── */
-	.trust-bar {
-		background: var(--black-soft);
-		border-bottom: 2px solid var(--gold);
-	}
-	.trust-bar-inner {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 0;
-	}
-	.trust-item {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		color: var(--cream);
-		padding: 1.25rem 2.5rem;
-		font-size: 0.95rem;
-		font-weight: 600;
-		border-right: 1px solid rgba(255,255,255,0.1);
-	}
-	.trust-item:last-child { border-right: none; }
-	.trust-icon { font-size: 1.2rem; }
+  <!-- ── CONTACT BANNER ── -->
+  <section
+    class="relative py-24 px-6 text-white text-center"
+    style="background-color:#1a1a1a;"
+  >
+    <div
+      class="absolute inset-0 bg-cover bg-center opacity-20"
+      style="background-image:url('/images/contact-banner.jpg');"
+      aria-hidden="true"
+    ></div>
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <p class="section-label mb-4">Ready to Get Started?</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">Let's Work Together</h2>
+      <div class="gold-rule"></div>
+      <p class="text-gray-300 mt-4 mb-10">
+        Contact us today to schedule your signing appointment or to learn more
+        about how we can serve your title company, escrow office, or lending team.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block border-2 border-[#c8a951] text-[#c8a951] font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#c8a951] hover:text-[#1a1a1a] transition-colors no-underline"
+      >
+        Contact Mallory
+      </a>
+    </div>
+  </section>
 
-	/* ── Services ── */
-	.services-section {
-		padding: var(--section-padding);
-		background: var(--cream);
-	}
-	.services-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		gap: 1.75rem;
-	}
-	.service-card {
-		background: var(--white);
-		border-radius: 10px;
-		padding: 2rem 1.75rem;
-		box-shadow: var(--card-shadow);
-		border-top: 3px solid var(--gold);
-		transition: box-shadow 0.2s, transform 0.2s;
-	}
-	.service-card:hover {
-		box-shadow: var(--card-shadow-hover);
-		transform: translateY(-3px);
-	}
-	.service-icon {
-		font-size: 2rem;
-		margin-bottom: 0.75rem;
-	}
-	.service-card h3 {
-		font-size: 1.15rem;
-		color: var(--black);
-		margin-bottom: 0.5rem;
-	}
-	.service-card p {
-		color: var(--text-muted);
-		font-size: 0.97rem;
-		margin: 0;
-		line-height: 1.6;
-	}
+</BaseLayout>
 
-	/* ── CTA Band ── */
-	.cta-band {
-		background: var(--black);
-		background-image: linear-gradient(135deg, #1a1a1a 60%, #2a1f05);
-		padding: var(--section-padding);
-		border-top: 3px solid var(--gold);
-	}
-	.cta-inner {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: space-between;
-		gap: 2rem;
-	}
-	.cta-text h2 {
-		color: var(--gold);
-		margin-bottom: 0.5rem;
-	}
-	.cta-text p {
-		color: rgba(255,255,255,0.78);
-		max-width: 520px;
-		margin: 0;
-		font-size: 1.05rem;
-	}
-	.cta-actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-		flex-shrink: 0;
-	}
-
-	@media (max-width: 720px) {
-		.hero { min-height: 450px; }
-		.hero h1 { font-size: 2.2rem; }
-		.trust-item { padding: 0.75rem 1rem; font-size: 0.85rem; border-right: none; }
-		.cta-inner { flex-direction: column; text-align: center; }
-		.cta-text p { margin-bottom: 1.5rem; }
-		.cta-actions { width: 100%; justify-content: center; }
-		.cta-actions .btn { flex: 1; text-align: center; }
-	}
-</style>
