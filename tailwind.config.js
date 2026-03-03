@@ -14,6 +14,12 @@ export default {
       height: {
         'hero-banner': '600px',
       },
+      height: {
+        'hero-banner': '600px',
+      },
+      objectPosition: {
+        'headshot-center': 'center 40%',
+      },
     },
   },
   plugins: [],
