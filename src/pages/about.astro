@@ -5,7 +5,7 @@ import { SITE_TITLE } from '../consts';
 const whyMalloryItems = [
   {
     title: "Extension of your Company",
-    body: "We understand that we are an extension of your company and represent and answer all queries of signers in a professional capacity.",
+    body: "We understand that we are an extension of your company and represent and queries of signers in a professional capacity.",
     icon: "🤝",
   },
   {
@@ -54,15 +54,19 @@ const whyMalloryItems = [
   <section class="bg-[#f8f4ed] py-20 px-6">
     <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
 
-      <!-- Headshot -->
+      <!-- Headshot — background-image approach for precise zoom + position control -->
       <div class="flex-shrink-0">
-        <div class="w-72 h-72 md:w-80 md:h-80 rounded-full border-4 border-[#c8a951] overflow-hidden">
-          <img
-            src="/assets/mallory-headshot.png"
-            alt="Mallory — Stamp 731 Notary"
-            class="w-full h-full object-cover object-top"
-          />
-        </div>
+        <div
+          class="w-72 h-72 md:w-80 md:h-80 rounded-full border-4 border-[#c8a951]"
+          style="
+            background-image: url('/assets/mallory-headshot.png');
+            background-size: 155%;
+            background-position: center 12%;
+            background-repeat: no-repeat;
+          "
+          role="img"
+          aria-label="Mallory — Stamp 731 Notary"
+        ></div>
       </div>
 
       <!-- Intro copy -->
