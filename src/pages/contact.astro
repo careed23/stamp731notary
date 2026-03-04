@@ -76,23 +76,11 @@ import { SITE_TITLE, CONTACT_EMAIL } from '../consts';
         <h3 class="font-serif text-2xl text-[#1a1a1a] mb-6">Send a Message</h3>
 
         <form
-          name="contact"
+          id="contactForm"
           method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          action="/contact/thank-you"
+          action="/api/contact"
           class="space-y-5"
         >
-          <!-- Netlify required hidden input -->
-          <input type="hidden" name="form-name" value="contact" />
-
-          <!-- Honeypot (spam prevention) -->
-          <p class="hidden" aria-hidden="true">
-            <label>
-              Don't fill this out if you're human:
-              <input name="bot-field" />
-            </label>
-          </p>
 
           <!-- Name -->
           <div>
@@ -182,9 +170,57 @@ import { SITE_TITLE, CONTACT_EMAIL } from '../consts';
             Send Message
           </button>
         </form>
+
+        <div id="form-messages" class="mt-4 text-center hidden">
+          <p id="form-success" class="text-green-600 font-semibold"></p>
+          <p id="form-error" class="text-red-600 font-semibold"></p>
+        </div>
+
       </div>
 
     </div>
   </section>
 
 </BaseLayout>
+
+<script is:inline>
+  const contactForm = document.getElementById("contactForm");
+  const formMessages = document.getElementById("form-messages");
+  const formSuccess = document.getElementById("form-success");
+  const formError = document.getElementById("form-error");
+
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const response = await fetch(contactForm.action, {
+      method: contactForm.method,
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    formMessages.classList.remove("hidden");
+    formSuccess.textContent = "";
+    formError.textContent = "";
+
+    if (response.ok) {
+      const result = await response.json();
+      formSuccess.textContent = result.message || "Message sent successfully!";
+      contactForm.reset();
+      setTimeout(() => {
+        window.location.href = "/contact/thank-you";
+      }, 1500);
+    } else {
+      const errorText = await response.text();
+      try {
+        const errorJson = JSON.parse(errorText);
+        formError.textContent = errorJson.message || "Something went wrong. Please try again.";
+      } catch (e) {
+        formError.textContent = "Something went wrong. Please try again.";
+        console.error("Error parsing response:", errorText);
+      }
+    }
+  });
+</script>
