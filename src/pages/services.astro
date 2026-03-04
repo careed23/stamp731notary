@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_TITLE } from '../consts';
+
+const notaryServices = [
+  {
+    title: "Loan Signings (Purchase, Refinance, HELOC)",
+    body: "Expertly handling all types of loan documents for purchases, refinances, and Home Equity Line of Credit (HELOC) transactions.",
+    icon: "✍️",
+  },
+  {
+    title: "General Notary Work",
+    body: "Witnessing and authenticating signatures on a variety of legal documents, including affidavits, power of attorney, and more.",
+    icon: "📜",
+  },
+  {
+    title: "Remote Online Notarization (RON)",
+    body: "Offering convenient and secure online notarization services for clients who prefer to complete their documents remotely.",
+    icon: "💻",
+  },
+  {
+    title: "Mobile Notary Services",
+    body: "Traveling to your preferred location for notarizations, providing flexibility and convenience for busy individuals.",
+    icon: "🚗",
+  },
+  {
+    title: "Estate Planning Documents",
+    body: "Specialized in notarizing wills, trusts, and other sensitive estate planning documents with accuracy and discretion.",
+    icon: "🏠",
+  },
+  {
+    title: "Power of Attorney",
+    body: "Notarizing documents that grant authority to another person to act on your behalf in legal and financial matters.",
+    icon: "🧑‍⚖️",
+  },
+];
+---
+
+<BaseLayout
+  title={`Services | ${SITE_TITLE}`}
+  description="Discover the comprehensive notary signing services offered by Mallory at Stamp 731 Notary, including loan signings, general notary work, and remote online notarization."
+>
+
+  <section class="py-24 px-6 text-white text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="section-label mb-4">Our Offerings</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-normal mb-4">Notary Services</h1>
+      <div class="gold-rule"></div>
+    </div>
+  </section>
+
+  <section class="bg-[#f8f4ed] py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="section-label">What We Do</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-[#1a1a1a] mt-2 mb-4">
+          Comprehensive Notary Solutions
+        </h2>
+        <div class="gold-rule"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {notaryServices.map((service) => (
+          <div class="bg-white border border-[#ede8df] p-8 card-lift">
+            <div class="text-3xl mb-4">{service.icon}</div>
+            <h3 class="font-serif text-xl text-[#1a1a1a] mb-3">{service.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{service.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#1a1a1a] py-20 px-6 text-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="font-serif text-3xl mb-4">Need a Notary?</h2>
+      <div class="gold-rule"></div>
+      <p class="text-gray-300 mt-4 mb-8">
+        Contact us today to schedule your signing or to learn more about our services.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block border-2 border-[#c8a951] text-[#c8a951] font-sans font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-[#c8a951] hover:text-[#1a1a1a] transition-colors no-underline"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
